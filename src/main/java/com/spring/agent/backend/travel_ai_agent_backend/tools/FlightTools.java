@@ -30,7 +30,6 @@ public class FlightTools {
         return filteredFlights.stream()
                 .map(f->f.getAirLine()+ " : $ " + f.getPrice())
                 .collect(Collectors.joining(","));
-
     }
 
 

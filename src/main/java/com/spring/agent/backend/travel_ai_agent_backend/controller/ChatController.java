@@ -4,10 +4,7 @@ import com.spring.agent.backend.travel_ai_agent_backend.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.asm.Handle;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/chat")
@@ -18,8 +15,8 @@ public class ChatController {
     private final ChatService chatService;
 
     @GetMapping
-    public ResponseEntity<String> chat(@RequestBody String message){
+    public ResponseEntity<String> chat(@RequestHeader("Conversation Id")String conversationId, @RequestBody String message){
 
-        return ResponseEntity.ok(chatService.chat(message));
+        return ResponseEntity.ok(chatService.chat(conversationId, message));
     }
 }
